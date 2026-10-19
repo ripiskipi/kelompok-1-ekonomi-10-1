@@ -48,7 +48,17 @@ nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-8px;heig
 .btn.ghost:hover{background:rgba(255,255,255,.1)}
 .hero-art{animation:float 6s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-12px)}}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:70px}
+/* KELOMPOK */
+.team{margin-top:60px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:26px 30px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;backdrop-filter:blur(6px)}
+.team .label{display:flex;align-items:center;gap:16px;padding-right:28px;border-right:1px solid rgba(255,255,255,.18)}
+.team .label .badge-no{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);display:grid;place-items:center;font-size:1.9rem;font-weight:900}
+.team .label small{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);font-weight:700}
+.team .label b{font-size:1.5rem;color:#fff;line-height:1.1}
+.members{display:flex;flex-wrap:wrap;gap:12px}
+.member{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:99px;padding:6px 18px 6px 6px;color:#fff;font-weight:600;font-size:.92rem;transition:.25s}
+.member:hover{background:rgba(212,160,23,.25);transform:translateY(-3px)}
+.member i{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--navy2));border:2px solid var(--gold);display:grid;place-items:center;font-style:normal;font-weight:800;color:var(--gold2);font-size:.9rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
 .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px;text-align:center}
 .stat b{display:block;font-size:2rem;color:var(--gold2)}
 .stat small{color:#b9c8dd}
@@ -142,6 +152,8 @@ footer b{color:#fff}
   nav ul{position:fixed;top:68px;left:0;right:0;background:var(--navy);flex-direction:column;padding:20px 6%;gap:16px;display:none}
   nav ul.show{display:flex}.burger{display:block}
   .stats{grid-template-columns:1fr}
+  .team{grid-template-columns:1fr}
+  .team .label{border-right:0;padding-right:0;border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:18px}
   .siklus-panel{grid-template-columns:1fr;text-align:center}
   .flow{flex-wrap:wrap;justify-content:center}
 }
@@ -206,6 +218,17 @@ footer b{color:#fff}
           <g transform="translate(60 290)"><ellipse cx="22" cy="14" rx="22" ry="13" fill="#f2c94c"/><circle cx="38" cy="0" r="11" fill="#f2c94c"/><path d="M47 0 l12 3 -12 4z" fill="#e0742b"/><circle cx="41" cy="-3" r="2" fill="#0b1f3a"/></g>
           <g transform="translate(380 305) scale(.7)"><ellipse cx="22" cy="14" rx="22" ry="13" fill="#f2c94c"/><circle cx="38" cy="0" r="11" fill="#f2c94c"/><path d="M47 0 l12 3 -12 4z" fill="#e0742b"/><circle cx="41" cy="-3" r="2" fill="#0b1f3a"/></g>
         </svg>
+      </div>
+    </div>
+    <div class="team">
+      <div class="label"><div class="badge-no">1</div><div><small>Dipresentasikan oleh</small><b>Kelompok 1</b></div></div>
+      <div class="members">
+        <div class="member"><i>R</i>Risky</div>
+        <div class="member"><i>A</i>Arsa</div>
+        <div class="member"><i>K</i>Karin</div>
+        <div class="member"><i>Z</i>Zahra</div>
+        <div class="member"><i>B</i>Bianca</div>
+        <div class="member"><i>M</i>Maulida</div>
       </div>
     </div>
     <div class="stats">
