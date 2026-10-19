@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distribusi | Corporate Learning Hub</title>
+<style>
+:root{
+  --navy:#0b1f3a; --navy2:#12305a; --blue:#1e6fd9; --gold:#d4a017; --gold2:#f2c94c;
+  --bg:#f4f7fb; --card:#ffffff; --text:#1c2733; --muted:#5d6b7c; --line:#e3e9f1;
+  --shadow:0 10px 30px rgba(11,31,58,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+img,svg{max-width:100%}
+.container{width:min(1140px,92%);margin:auto}
+section{padding:90px 0}
+.tag{display:inline-block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:10px}
+h2.title{font-size:clamp(1.7rem,3.2vw,2.5rem);color:var(--navy);line-height:1.2;margin-bottom:14px}
+.lead{color:var(--muted);max-width:640px}
+.head{margin-bottom:46px}
+.head.center{text-align:center}.head.center .lead{margin:auto}
+
+/* NAV */
+header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(11,31,58,.92);backdrop-filter:blur(10px);transition:.3s}
+header.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;letter-spacing:.04em;text-decoration:none}
+.logo span.mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold2));display:grid;place-items:center;color:var(--navy);font-weight:900}
+nav ul{display:flex;gap:28px;list-style:none}
+nav a{color:#cdd8e8;text-decoration:none;font-size:.92rem;font-weight:500;transition:.2s;position:relative}
+nav a:hover,nav a.active{color:#fff}
+nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;background:var(--gold)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+
+/* HERO */
+.hero{background:radial-gradient(circle at 80% 20%,#1b4a8a 0,transparent 45%),linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:150px 0 90px;position:relative;overflow:hidden}
+.hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.1;margin-bottom:18px}
+.hero h1 em{font-style:normal;color:var(--gold2)}
+.hero p{color:#c4d2e6;max-width:520px;margin-bottom:30px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:13px 26px;border-radius:10px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font-size:.95rem;transition:.25s;display:inline-block}
+.btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy)}
+.btn.gold:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(212,160,23,.4)}
+.btn.ghost{border-color:rgba(255,255,255,.35);color:#fff}
+.btn.ghost:hover{background:rgba(255,255,255,.1)}
+.hero-art{animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:70px}
+.stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px;text-align:center}
+.stat b{display:block;font-size:2rem;color:var(--gold2)}
+.stat small{color:#b9c8dd}
+
+/* DEFINISI */
+.def{background:#fff}
+.def .grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.flow{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--bg);border-radius:20px;padding:34px 20px}
+.flow div{text-align:center;font-weight:700;color:var(--navy);font-size:.9rem}
+.flow .ic{width:68px;height:68px;border-radius:50%;background:#fff;box-shadow:var(--shadow);display:grid;place-items:center;font-size:1.9rem;margin:0 auto 8px}
+.flow .arrow{color:var(--gold);font-size:1.6rem}
+
+/* MACAM */
+.cards5{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.mcard{background:var(--card);border-radius:18px;padding:28px 22px;box-shadow:var(--shadow);border:1px solid var(--line);transition:.3s;cursor:pointer;position:relative;overflow:hidden}
+.mcard::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:linear-gradient(90deg,var(--blue),var(--gold))}
+.mcard:hover{transform:translateY(-8px)}
+.mcard .num{font-size:.8rem;font-weight:800;color:var(--gold)}
+.mcard .ic{font-size:2.2rem;margin:10px 0}
+.mcard h3{font-size:1.05rem;color:var(--navy);margin-bottom:6px}
+.mcard p{font-size:.88rem;color:var(--muted)}
+.more{display:inline-block;margin-top:12px;font-size:.84rem;font-weight:700;color:var(--blue)}
+
+/* SIKLUS */
+.siklus{background:linear-gradient(180deg,var(--navy),#0a1a31);color:#fff}
+.siklus h2.title{color:#fff}.siklus .lead{color:#b9c8dd}
+.timeline{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;position:relative}
+.timeline::before{content:"";position:absolute;top:34px;left:6%;right:6%;height:3px;background:linear-gradient(90deg,var(--gold),var(--blue));opacity:.6}
+.step{text-align:center;cursor:pointer;position:relative;z-index:1;padding:0 4px}
+.step .dot{width:68px;height:68px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-size:1.6rem;background:var(--navy2);border:3px solid var(--gold);transition:.3s}
+.step:hover .dot,.step.on .dot{background:var(--gold);transform:scale(1.15);box-shadow:0 0 0 8px rgba(212,160,23,.2)}
+.step b{display:block;font-size:.82rem;line-height:1.3}
+.step small{color:#8fa4c2;font-size:.72rem}
+.siklus-panel{margin-top:50px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:32px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;min-height:150px}
+.siklus-panel .big{font-size:3.4rem}
+.siklus-panel h3{color:var(--gold2);margin-bottom:6px}
+.siklus-panel p{color:#c4d2e6}
+.siklus-panel .btn{margin-top:14px;padding:9px 20px;font-size:.85rem}
+
+/* CONTOH */
+.ex{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
+.excard{background:#fff;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:.3s;border:1px solid var(--line)}
+.excard:hover{transform:translateY(-8px)}
+.excard .img{height:200px;position:relative;overflow:hidden}
+.excard .img svg{width:100%;height:100%;display:block;transition:.5s}
+.excard:hover .img svg{transform:scale(1.08)}
+.excard .badge{position:absolute;top:14px;left:14px;background:rgba(11,31,58,.85);color:#fff;font-size:.72rem;padding:5px 12px;border-radius:99px;font-weight:700}
+.excard .body{padding:22px}
+.excard h3{color:var(--navy);margin-bottom:6px}
+.excard p{color:var(--muted);font-size:.92rem}
+
+/* FAKTA */
+.fakta{background:#fff}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.fact{border-radius:20px;padding:30px;border:1px solid var(--line);background:var(--bg);transition:.3s}
+.fact:hover{background:var(--navy);color:#fff}
+.fact:hover h3{color:var(--gold2)}.fact:hover p{color:#c4d2e6}
+.fact .ic{font-size:2.2rem}
+.fact h3{margin:10px 0;color:var(--navy)}
+.fact p{color:var(--muted);font-size:.92rem}
+
+footer{background:#07152a;color:#8fa4c2;text-align:center;padding:36px 0;font-size:.9rem}
+footer b{color:#fff}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(5,15,30,.7);backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+.modal.open{display:flex;animation:fade .25s}
+@keyframes fade{from{opacity:0}}
+.mbox{background:#fff;border-radius:24px;width:min(640px,100%);max-height:90vh;overflow:auto;animation:pop .3s}
+@keyframes pop{from{transform:translateY(30px) scale(.95);opacity:0}}
+.mtop{height:170px;display:grid;place-items:center;font-size:4.5rem;position:relative}
+.mclose{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.9);font-size:1.2rem;cursor:pointer;font-weight:700}
+.mclose:hover{background:var(--gold)}
+.mbody{padding:28px 32px 34px}
+.mbody h3{font-size:1.5rem;color:var(--navy);margin-bottom:10px}
+.mbody p{color:var(--muted);margin-bottom:14px}
+.mbody ul{padding-left:20px;color:var(--text);margin-bottom:14px}
+.mbody li{margin-bottom:6px}
+.pill{display:inline-block;background:#fff6dc;color:#8a6500;font-weight:700;font-size:.8rem;padding:5px 12px;border-radius:99px;margin-bottom:10px}
+.mnav{display:flex;justify-content:space-between;margin-top:20px}
+.mnav button{border:1px solid var(--line);background:var(--bg);padding:9px 18px;border-radius:10px;cursor:pointer;font-weight:600;color:var(--navy)}
+.mnav button:hover{background:var(--navy);color:#fff}
+
+.reveal{opacity:0;transform:translateY(30px);transition:.7s}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .hero .grid,.def .grid{grid-template-columns:1fr}
+  .hero-art{order:-1;max-width:420px;margin:auto}
+  .timeline{grid-template-columns:repeat(2,1fr);gap:26px}.timeline::before{display:none}
+  nav ul{position:fixed;top:68px;left:0;right:0;background:var(--navy);flex-direction:column;padding:20px 6%;gap:16px;display:none}
+  nav ul.show{display:flex}.burger{display:block}
+  .stats{grid-template-columns:1fr}
+  .siklus-panel{grid-template-columns:1fr;text-align:center}
+  .flow{flex-wrap:wrap;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="container nav">
+    <a href="#home" class="logo"><span class="mark">D</span> DISTRIBUSI<span style="color:var(--gold)">.</span>CO</a>
+    <nav>
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+      <ul id="menu">
+        <li><a href="#home" class="active">Beranda</a></li>
+        <li><a href="#pengertian">Pengertian</a></li>
+        <li><a href="#macam">Macam</a></li>
+        <li><a href="#siklus">Siklus</a></li>
+        <li><a href="#contoh">Contoh</a></li>
+        <li><a href="#fakta">Fakta Unik</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="grid">
+      <div>
+        <span class="tag">Supply Chain &amp; Logistics</span>
+        <h1>Menyalurkan Barang dari <em>Produsen</em> ke Tangan <em>Konsumen</em></h1>
+        <p>Distribusi adalah proses penyaluran, pembagian, atau pengiriman barang dan jasa dari pihak produsen kepada konsumen. Pelajari macam, siklus, dan contohnya secara interaktif.</p>
+        <div class="btns">
+          <a href="#siklus" class="btn gold">Lihat Siklus Distribusi</a>
+          <a href="#contoh" class="btn ghost">Contoh Kegiatan</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e6fd9"/><stop offset="1" stop-color="#0c3a78"/></linearGradient>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a5fa8" stop-opacity=".0"/><stop offset="1" stop-color="#f2c94c" stop-opacity=".25"/></linearGradient>
+          </defs>
+          <circle cx="380" cy="80" r="46" fill="#f2c94c" opacity=".9"/>
+          <rect width="480" height="230" fill="url(#sky)"/>
+          <rect y="230" width="480" height="130" fill="url(#sea)"/>
+          <path d="M0 250 Q40 238 80 250 T160 250 T240 250 T320 250 T400 250 T480 250" stroke="#fff" stroke-opacity=".3" fill="none" stroke-width="3"/>
+          <path d="M0 280 Q40 268 80 280 T160 280 T240 280 T320 280 T400 280 T480 280" stroke="#fff" stroke-opacity=".2" fill="none" stroke-width="3"/>
+          <!-- ship -->
+          <path d="M60 215 H400 L370 255 H90 Z" fill="#0b1f3a"/>
+          <rect x="90" y="196" width="60" height="19" fill="#d4a017"/>
+          <rect x="150" y="196" width="60" height="19" fill="#e0533d"/>
+          <rect x="210" y="196" width="60" height="19" fill="#1e6fd9"/>
+          <rect x="120" y="177" width="60" height="19" fill="#2fa36b"/>
+          <rect x="180" y="177" width="60" height="19" fill="#d4a017"/>
+          <rect x="150" y="158" width="60" height="19" fill="#e0533d"/>
+          <rect x="300" y="170" width="70" height="45" fill="#fff"/>
+          <rect x="315" y="145" width="40" height="25" fill="#dfe8f5"/>
+          <rect x="330" y="125" width="10" height="20" fill="#e0533d"/>
+          <g fill="#0b1f3a"><rect x="310" y="180" width="10" height="10"/><rect x="326" y="180" width="10" height="10"/><rect x="342" y="180" width="10" height="10"/><rect x="358" y="180" width="8" height="10"/></g>
+          <!-- duck -->
+          <g transform="translate(60 290)"><ellipse cx="22" cy="14" rx="22" ry="13" fill="#f2c94c"/><circle cx="38" cy="0" r="11" fill="#f2c94c"/><path d="M47 0 l12 3 -12 4z" fill="#e0742b"/><circle cx="41" cy="-3" r="2" fill="#0b1f3a"/></g>
+          <g transform="translate(380 305) scale(.7)"><ellipse cx="22" cy="14" rx="22" ry="13" fill="#f2c94c"/><circle cx="38" cy="0" r="11" fill="#f2c94c"/><path d="M47 0 l12 3 -12 4z" fill="#e0742b"/><circle cx="41" cy="-3" r="2" fill="#0b1f3a"/></g>
+        </svg>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b data-count="1500" data-suffix="+">0</b><small>Kontainer hilang di laut tiap tahun</small></div>
+      <div class="stat"><b data-count="28000">0</b><small>Bebek karet Friendly Floatees (1992)</small></div>
+      <div class="stat"><b data-count="53" data-suffix="%">0</b><small>Porsi biaya tahap last mile</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- PENGERTIAN -->
+<section class="def" id="pengertian">
+  <div class="container grid">
+    <div class="reveal">
+      <span class="tag">Pengertian</span>
+      <h2 class="title">Apa itu Distribusi?</h2>
+      <p class="lead">Distribusi adalah proses penyaluran, pembagian, atau pengiriman barang dan jasa dari pihak produsen kepada konsumen. Tanpa distribusi, produk terbaik pun tidak akan sampai ke orang yang membutuhkannya.</p>
+    </div>
+    <div class="flow reveal">
+      <div><div class="ic">🏭</div>Produsen</div><span class="arrow">➜</span>
+      <div><div class="ic">🏬</div>Distributor</div><span class="arrow">➜</span>
+      <div><div class="ic">🛒</div>Pengecer</div><span class="arrow">➜</span>
+      <div><div class="ic">🙋</div>Konsumen</div>
+    </div>
+  </div>
+</section>
+
+<!-- MACAM -->
+<section id="macam">
+  <div class="container">
+    <div class="head center reveal">
+      <span class="tag">Jenis</span>
+      <h2 class="title">Macam-Macam Distribusi</h2>
+      <p class="lead">Klik salah satu kartu untuk melihat penjelasan dan contohnya.</p>
+    </div>
+    <div class="cards5" id="macamGrid"></div>
+  </div>
+</section>
+
+<!-- SIKLUS -->
+<section class="siklus" id="siklus">
+  <div class="container">
+    <div class="head center reveal">
+      <span class="tag">Alur Kerja</span>
+      <h2 class="title">Siklus Distribusi</h2>
+      <p class="lead">Tujuh tahap yang berulang dalam setiap rantai distribusi. Klik tiap tahap untuk membuka detailnya.</p>
+    </div>
+    <div class="timeline" id="timeline"></div>
+    <div class="siklus-panel" id="panel"></div>
+  </div>
+</section>
+
+<!-- CONTOH -->
+<section id="contoh">
+  <div class="container">
+    <div class="head center reveal">
+      <span class="tag">Studi Kasus</span>
+      <h2 class="title">Contoh Kegiatan Distribusi</h2>
+      <p class="lead">Distribusi ada di sekitar kita setiap hari. Klik kartu untuk melihat alurnya.</p>
+    </div>
+    <div class="ex" id="exGrid"></div>
+  </div>
+</section>
+
+<!-- FAKTA -->
+<section class="fakta" id="fakta">
+  <div class="container">
+    <div class="head center reveal">
+      <span class="tag">Tahukah Kamu?</span>
+      <h2 class="title">Fakta Unik Distribusi</h2>
+    </div>
+    <div class="facts">
+      <div class="fact reveal"><div class="ic">🚢</div><h3>Efek Domino Kargo Terbengkalai</h3><p>Rata-rata lebih dari 1.500 kontainer kargo hilang di laut setiap tahun akibat cuaca buruk. Kontainer yang jatuh menciptakan ekosistem buatan baru di dasar laut, tetapi juga menjadi tantangan besar bagi pelacakan logistik global.</p></div>
+      <div class="fact reveal"><div class="ic">🦆</div><h3>Misteri Bebek Karet</h3><p>Tahun 1992, kapal kargo pengangkut mainan anak mengalami kecelakaan di Samudra Pasifik dan 28.000 bebek karet hanyut. Selama belasan tahun, bebek-bebek ini membantu ilmuwan memetakan arus laut dunia secara akurat.</p></div>
+      <div class="fact reveal"><div class="ic">🏠</div><h3>The Last Mile Problem</h3><p>Pengantaran dari kurir terakhir ke rumah pembeli adalah tahap paling mahal dan tidak efisien, hingga 53% dari total biaya pengiriman. Karena itu banyak perusahaan berlomba membuat inovasi drone dan robot pengantar.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container"><b>DISTRIBUSI.CO</b> · Corporate Learning Hub · © 2026 Seluruh hak cipta dilindungi.</div></footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="mbox" role="dialog" aria-modal="true">
+    <div class="mtop" id="mTop"><button class="mclose" id="mClose" aria-label="Tutup">✕</button><span id="mIcon"></span></div>
+    <div class="mbody">
+      <span class="pill" id="mPill"></span>
+      <h3 id="mTitle"></h3>
+      <div id="mContent"></div>
+      <div class="mnav" id="mNav"><button id="mPrev">← Sebelumnya</button><button id="mNext">Berikutnya →</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== DATA ===== */
+const macam=[
+ {ic:"🤝",t:"Distribusi Langsung",d:"Produsen menjual langsung ke konsumen tanpa perantara.",c:"linear-gradient(135deg,#1e6fd9,#12305a)",
+  p:"Barang disalurkan langsung dari produsen ke konsumen akhir tanpa melalui pedagang perantara.",
+  l:["Harga lebih murah karena tidak ada margin perantara","Produsen memegang kendali penuh atas kualitas layanan","Jangkauan pasar terbatas","Contoh: toko online milik brand, penjual kue pesanan, petani menjual di kebun"]},
+ {ic:"🔗",t:"Distribusi Tidak Langsung",d:"Barang melewati perantara sebelum sampai ke konsumen.",c:"linear-gradient(135deg,#2fa36b,#14573a)",
+  p:"Barang disalurkan melalui satu atau lebih perantara seperti agen, grosir, dan pengecer.",
+  l:["Jangkauan pasar lebih luas","Produsen fokus pada produksi","Harga akhir cenderung lebih tinggi","Contoh: pabrik → distributor → toko → konsumen"]},
+ {ic:"🌐",t:"Distribusi Intensif",d:"Produk disebar ke sebanyak mungkin gerai.",c:"linear-gradient(135deg,#e0742b,#8a3a0a)",
+  p:"Produsen menyalurkan produk ke sebanyak mungkin tempat penjualan agar mudah ditemukan konsumen.",
+  l:["Cocok untuk produk kebutuhan sehari-hari","Ketersediaan barang sangat tinggi","Biaya distribusi besar","Contoh: air mineral, mi instan, sabun, rokok"]},
+ {ic:"🎯",t:"Distribusi Selektif",d:"Hanya sebagian gerai terpilih yang menjual produk.",c:"linear-gradient(135deg,#7a4fd1,#3a1f7a)",
+  p:"Produsen memilih beberapa pengecer atau distributor tertentu yang dianggap sesuai dengan citra produk.",
+  l:["Cocok untuk produk dengan kualitas dan citra tertentu","Hubungan dengan penyalur lebih terjaga","Contoh: elektronik, pakaian bermerek, kosmetik"]},
+ {ic:"👑",t:"Distribusi Eksklusif",d:"Satu wilayah hanya dilayani satu distributor resmi.",c:"linear-gradient(135deg,#d4a017,#8a6500)",
+  p:"Produsen hanya menunjuk satu distributor atau pengecer di suatu wilayah dengan hak penjualan khusus.",
+  l:["Citra produk premium dan eksklusif","Kontrol harga dan layanan sangat ketat","Pasar sangat terbatas","Contoh: mobil mewah, jam tangan mewah, tas desainer"]}
+];
+
+const siklus=[
+ {ic:"🏭",t:"Produksi / Pengumpulan",d:"Proses pembuatan barang atau pengumpulan hasil dari produsen.",c:"linear-gradient(135deg,#1e6fd9,#0b1f3a)",
+  l:["Pabrik memproduksi barang jadi","Petani atau nelayan mengumpulkan hasil panen","Kontrol kualitas sebelum barang keluar"]},
+ {ic:"🚚",t:"Pemasokan ke Pusat Distribusi",d:"Pengiriman barang dari pabrik atau tempat produksi menuju gudang / pusat logistik.",c:"linear-gradient(135deg,#2fa36b,#0b1f3a)",
+  l:["Pengangkutan dengan truk, kereta, kapal, atau pesawat","Pencatatan jumlah dan kondisi barang masuk","Penjadwalan pengiriman agar efisien"]},
+ {ic:"📦",t:"Pemilahan & Penyimpanan",d:"Kegiatan menyortir, mengemas ulang, dan menyimpan stok barang sebelum dikirim (warehousing).",c:"linear-gradient(135deg,#e0742b,#0b1f3a)",
+  l:["Menyortir barang berdasarkan jenis dan tujuan","Mengemas ulang agar aman dikirim","Manajemen stok dan penyimpanan di gudang"]},
+ {ic:"🧾",t:"Penjualan & Pemesanan",d:"Proses transaksi antara produsen, distributor, grosir, atau pengecer.",c:"linear-gradient(135deg,#7a4fd1,#0b1f3a)",
+  l:["Pemesanan barang oleh pelanggan atau mitra","Penerbitan faktur dan pembayaran","Konfirmasi ketersediaan stok"]},
+ {ic:"🛵",t:"Pengiriman (Delivery)",d:"Transportasi barang dari pusat distribusi atau toko ke konsumen akhir.",c:"linear-gradient(135deg,#d4a017,#0b1f3a)",
+  l:["Tahap last mile menuju rumah pembeli","Pelacakan status pengiriman","Tahap ini memakan hingga 53% total biaya kirim"]},
+ {ic:"↩️",t:"Retur (jika ada)",d:"Penanganan barang yang rusak, tidak sesuai pesanan, atau dikembalikan oleh konsumen.",c:"linear-gradient(135deg,#c0392b,#0b1f3a)",
+  l:["Verifikasi alasan pengembalian","Penggantian atau pengembalian dana","Barang dicek ulang untuk dijual kembali atau dimusnahkan"]},
+ {ic:"📊",t:"Analisis & Evaluasi",d:"Penilaian performa pengiriman, biaya logistik, dan tingkat kepuasan pelanggan.",c:"linear-gradient(135deg,#16a0b5,#0b1f3a)",
+  l:["Mengukur ketepatan waktu pengiriman","Menghitung efisiensi biaya logistik","Survei kepuasan pelanggan untuk perbaikan siklus berikutnya"]}
+];
+
+const contoh=[
+ {ic:"💧",t:"Distribusi Nganter Galon",b:"Distribusi Air Minum",c:"linear-gradient(135deg,#1e6fd9,#7fc3ff)",
+  d:"Galon air dari pabrik hingga ke rumah pelanggan.",
+  p:"Air minum dalam kemasan galon diisi di pabrik, dikirim ke depot atau agen, lalu diantar kurir ke rumah dan kantor.",
+  l:["Pabrik mengisi dan menyegel galon","Truk membawa galon ke agen / depot","Agen menerima pesanan via telepon atau WhatsApp","Kurir mengantar dan menukar galon kosong","Galon kosong kembali ke pabrik untuk dicuci"]},
+ {ic:"📦",t:"Distribusi Nganter Paket",b:"E-Commerce & Kurir",c:"linear-gradient(135deg,#d4a017,#f2c94c)",
+  d:"Paket belanja online dikirim hingga depan pintu.",
+  p:"Penjual mengemas pesanan, kurir menjemput, paket disortir di hub, lalu diantar ke alamat pembeli.",
+  l:["Pembeli memesan di marketplace","Penjual mengemas dan menyerahkan ke kurir","Paket disortir di hub kota asal dan tujuan","Kurir last mile mengantar ke alamat","Pembeli menerima dan dapat mengajukan retur"]},
+ {ic:"🥬",t:"Distribusi Sayur Pasar",b:"Pangan Segar",c:"linear-gradient(135deg,#2fa36b,#a8e6a1)",
+  d:"Sayur segar dari petani menuju meja makan.",
+  p:"Hasil panen dikumpulkan tengkulak atau koperasi, dibawa ke pasar induk, lalu dijual pedagang ke pembeli.",
+  l:["Petani memanen sayur di dini hari","Pengepul mengumpulkan hasil panen","Truk membawa ke pasar induk","Pedagang pasar membeli dan menjual eceran","Konsumen membeli sayur segar setiap pagi"]}
+];
+
+/* ===== ILUSTRASI SVG UNTUK KARTU CONTOH ===== */
+const art={
+ 0:`<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><rect width="400" height="200" fill="#d8ecff"/><circle cx="330" cy="40" r="26" fill="#fff" opacity=".8"/><rect y="150" width="400" height="50" fill="#9fc3e6"/><rect x="40" y="95" width="190" height="55" rx="6" fill="#0b1f3a"/><rect x="230" y="110" width="60" height="40" rx="6" fill="#1e6fd9"/><rect x="238" y="116" width="30" height="16" fill="#d8ecff"/><circle cx="85" cy="152" r="14" fill="#222"/><circle cx="255" cy="152" r="14" fill="#222"/><g fill="#7fc3ff" stroke="#fff" stroke-width="2"><rect x="55" y="58" width="30" height="36" rx="8"/><rect x="95" y="58" width="30" height="36" rx="8"/><rect x="135" y="58" width="30" height="36" rx="8"/><rect x="175" y="58" width="30" height="36" rx="8"/></g><g fill="#1e6fd9"><rect x="62" y="50" width="16" height="9" rx="3"/><rect x="102" y="50" width="16" height="9" rx="3"/><rect x="142" y="50" width="16" height="9" rx="3"/><rect x="182" y="50" width="16" height="9" rx="3"/></g></svg>`,
+ 1:`<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><rect width="400" height="200" fill="#fff4cf"/><rect y="150" width="400" height="50" fill="#e8cf86"/><g stroke="#d4a017" stroke-width="3" stroke-dasharray="8 8" fill="none"><path d="M30 60 Q120 10 200 60 T370 50"/></g><g><rect x="60" y="95" width="80" height="55" fill="#c98a2b"/><rect x="60" y="95" width="80" height="14" fill="#e3a847"/><rect x="95" y="95" width="10" height="55" fill="#f2d28a"/></g><g><rect x="150" y="115" width="60" height="35" fill="#b57a1f"/><rect x="150" y="115" width="60" height="10" fill="#d99b3a"/></g><g transform="translate(250 90)"><circle cx="20" cy="70" r="16" fill="#222"/><circle cx="90" cy="70" r="16" fill="#222"/><path d="M20 70 L50 25 H80 L90 70" stroke="#0b1f3a" stroke-width="6" fill="none"/><rect x="38" y="5" width="44" height="30" fill="#d4a017"/><circle cx="62" cy="-6" r="10" fill="#0b1f3a"/></g></svg>`,
+ 2:`<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><rect width="400" height="200" fill="#e4f6e4"/><rect y="140" width="400" height="60" fill="#8fcf8a"/><path d="M0 140 Q100 100 200 140 T400 130 V200 H0Z" fill="#6fbf6a"/><path d="M40 70 H360 L335 110 H65Z" fill="#c0392b"/><path d="M40 70 H100 L90 110 H65Z M160 70 H220 L215 110 H145Z M280 70 H340 L335 110 H265Z" fill="#fff" opacity=".85"/><rect x="60" y="110" width="280" height="40" fill="#8a5a2b"/><g><circle cx="110" cy="124" r="14" fill="#e0533d"/><circle cx="140" cy="126" r="12" fill="#e0533d"/><path d="M180 140 q10 -30 20 0z M205 140 q10 -34 20 0z M230 140 q10 -30 20 0z" fill="#2fa36b"/><circle cx="290" cy="126" r="13" fill="#f2c94c"/><circle cx="318" cy="128" r="11" fill="#f2c94c"/></g></svg>`
+};
+
+/* ===== RENDER ===== */
+const $=s=>document.querySelector(s);
+$("#macamGrid").innerHTML=macam.map((m,i)=>`
+  <div class="mcard reveal" data-g="macam" data-i="${i}">
+    <span class="num">0${i+1}</span><div class="ic">${m.ic}</div>
+    <h3>${m.t}</h3><p>${m.d}</p><span class="more">Lihat detail →</span>
+  </div>`).join("");
+
+$("#timeline").innerHTML=siklus.map((s,i)=>`
+  <div class="step reveal" data-i="${i}">
+    <div class="dot">${s.ic}</div><b>${s.t}</b><small>Tahap ${i+1}</small>
+  </div>`).join("");
+
+$("#exGrid").innerHTML=contoh.map((e,i)=>`
+  <div class="excard reveal" data-g="contoh" data-i="${i}">
+    <div class="img">${art[i]}<span class="badge">${e.b}</span></div>
+    <div class="body"><h3>${e.t}</h3><p>${e.d}</p><span class="more">Lihat alur →</span></div>
+  </div>`).join("");
+
+/* ===== PANEL SIKLUS ===== */
+let curStep=0;
+function showStep(i){
+  curStep=i;
+  document.querySelectorAll(".step").forEach((el,k)=>el.classList.toggle("on",k===i));
+  const s=siklus[i];
+  $("#panel").innerHTML=`<div class="big">${s.ic}</div>
+    <div><h3>${i+1}. ${s.t}</h3><p>${s.d}</p>
+    <button class="btn gold" onclick="openModal('siklus',${i})">Buka Detail Pop-up</button></div>`;
+}
+document.querySelectorAll(".step").forEach(el=>{
+  el.addEventListener("mouseenter",()=>showStep(+el.dataset.i));
+  el.addEventListener("click",()=>{showStep(+el.dataset.i);openModal("siklus",+el.dataset.i)});
+});
+showStep(0);
+
+/* ===== MODAL ===== */
+const sets={macam,siklus,contoh};
+let g="macam",idx=0;
+function openModal(group,i){
+  g=group;idx=i;
+  const it=sets[g][i], total=sets[g].length;
+  $("#mTop").style.background=it.c||"linear-gradient(135deg,#1e6fd9,#0b1f3a)";
+  $("#mIcon").textContent=it.ic;
+  $("#mPill").textContent=(g==="macam"?"Macam Distribusi":g==="siklus"?"Siklus Distribusi":"Contoh Distribusi")+` · ${i+1}/${total}`;
+  $("#mTitle").textContent=it.t;
+  const intro=it.p||it.d;
+  const listTitle=g==="contoh"?"Alur kegiatan:":g==="siklus"?"Yang dilakukan:":"Karakteristik:";
+  $("#mContent").innerHTML=`<p>${intro}</p><p><b>${listTitle}</b></p><ul>${it.l.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+  $("#modal").classList.add("open");$("#modal").setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+}
+function closeModal(){$("#modal").classList.remove("open");$("#modal").setAttribute("aria-hidden","true");document.body.style.overflow=""}
+function move(d){const n=sets[g].length;openModal(g,(idx+d+n)%n);if(g==="siklus")showStep(idx)}
+$("#mClose").onclick=closeModal;
+$("#modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
+$("#mPrev").onclick=()=>move(-1);$("#mNext").onclick=()=>move(1);
+document.addEventListener("keydown",e=>{
+  if(!$("#modal").classList.contains("open"))return;
+  if(e.key==="Escape")closeModal();
+  if(e.key==="ArrowLeft")move(-1);
+  if(e.key==="ArrowRight")move(1);
+});
+document.querySelectorAll("[data-g]").forEach(el=>el.addEventListener("click",()=>openModal(el.dataset.g,+el.dataset.i)));
+
+/* ===== NAV, REVEAL, COUNTER ===== */
+$("#burger").onclick=()=>$("#menu").classList.toggle("show");
+document.querySelectorAll("#menu a").forEach(a=>a.addEventListener("click",()=>$("#menu").classList.remove("show")));
+addEventListener("scroll",()=>{
+  $("#hdr").classList.toggle("scrolled",scrollY>20);
+  let cur="home";
+  document.querySelectorAll("section[id]").forEach(s=>{if(scrollY>=s.offsetTop-120)cur=s.id});
+  document.querySelectorAll("#menu a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+cur));
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+function count(el){
+  const end=+el.dataset.count,suf=el.dataset.suffix||"";let t0=null;
+  const step=ts=>{t0=t0||ts;const p=Math.min((ts-t0)/1800,1);
+    el.textContent=Math.floor(end*p).toLocaleString("id-ID")+suf;if(p<1)requestAnimationFrame(step)};
+  requestAnimationFrame(step);
+}
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){count(e.target);co.unobserve(e.target)}}),{threshold:.5});
+document.querySelectorAll("[data-count]").forEach(el=>co.observe(el));
+</script>
+</body>
+</html>
